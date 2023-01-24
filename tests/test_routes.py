@@ -132,7 +132,10 @@ class TestAccountService(TestCase):
         )
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
+
         self.assertEqual(data["name"], account.name)  
+        self.assertEqual(data["name"], account.name)    
+
 
     def test_get_account_list(self):
         """It should Get a list of Accounts"""
@@ -141,6 +144,7 @@ class TestAccountService(TestCase):
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         data = resp.get_json()
         self.assertEqual(len(data), 5)
+
 
     def test_update_account(self):
         """It should Update an existing Account"""
@@ -156,3 +160,4 @@ class TestAccountService(TestCase):
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         updated_account = resp.get_json()
         self.assertEqual(updated_account["name"], "Something Known")
+
